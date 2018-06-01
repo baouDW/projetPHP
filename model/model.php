@@ -39,6 +39,15 @@ function postComment($postId, $author, $comment)
     return $affectedLines;
 }
 
+function deleteComment($id)
+{
+    $db = dbConnect();
+    $req = $db->prepare('DELETE FROM commentaires WHERE id= :id');
+    $req->execute(array(
+    'id' => $id    
+    ));
+}
+
 function insertPost($title,$content)
 {
     $db = dbConnect();

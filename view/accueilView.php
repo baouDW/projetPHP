@@ -1,28 +1,39 @@
 <?php
 //require('model/model.php');
 //$posts= getPosts();
+$title = 'Accueil'; 
 ?>
-<p><a href="view/loginView.php">Acces a l'espace administration</a></p>
-<h2>Bienvenue sur le blog de l'ecrivain</h2>
 
+
+
+
+<?php ob_start(); ?>
 
 <?php
+
 while ($data = $posts->fetch())
 {
 ?>    
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-                
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br />
-            <em><a href="index.php?id=<?= $data['id'] ?>&action=comm">Commentaires</a></em>
-        </p>
-    </div>
+    <div class="post-preview">
+            <a href="index.php?id=<?= $data['id'] ?>&action=comm">
+              <h2 class="post-title">
+                <?= htmlspecialchars($data['title']) ?>
+              </h2>
+              <h3 class="post-subtitle">
+                extrait
+              </h3>
+            </a>
+            <p class="post-meta">Poster le <?= $data['creation_date_fr'] ?></p>
+        </div>
+        <hr>    
+        
 <?php
 }
 $posts->closeCursor();
 ?>
+<!-- Pager -->
+    <div class="clearfix">
+        <a class="btn btn-primary float-right" href="#">Post précedent &rarr;</a>
+    </div>
+<?php $content = ob_get_clean(); ?>
+<?php require('./templateFront.html'); ?>

@@ -1,16 +1,16 @@
 <?php
-require('model/model.php');
+require('./model/model.php');
 
 function listPosts(){
 	$posts= getPosts();
-	require('view/accueilView.php');
+	require('./view/accueilView.php');
 }
 
 function insertP(){
 
 	$insertPost= insertPost($_POST['titre'], $_POST['texte']);
 
-	header('Location: view/adminView.php');
+	header('Location: ./view/adminView.php');
 }
 
 function addComment(/*$postId, $author, $comment*/)
@@ -23,24 +23,33 @@ function addComment(/*$postId, $author, $comment*/)
     }
     else {
        // header('Location: view/postView.php');
-        header('Location: index.php');
+        header('Location: ./index.php');
     }
 }
 
 function update(){
 	$update= UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
-	header('Location: view/adminView.php');
+	header('Location: ./view/crudView.php');
 }
 
 function delete(){
 	$delete=deletePost($_GET['id']);
-	header('Location: view/adminView.php');
+	header('Location: ./view/adminView.php');
 }
 
 function posts(){
 	$post= getPost($_GET['id']);
 	$comments=getComments($_GET['id']);
-	require('view/postView.php');
+	require('./view/postView.php');
 }
 
+function commentsAdmin(){
+	$post= getPost($_GET['id']);
+	$comments=getComments($_GET['id']);
+	require('./view/commentView.php');
+}
 
+function delcomm(){
+	$delcomm=deleteComment($_GET['id']);
+	header('Location: ./view/crudView.php');
+}
