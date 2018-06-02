@@ -14,6 +14,15 @@ if (isset($_GET['action'])) {
         }
     }
 
+    elseif ($_GET['action'] == 'signal') {
+        if (isset($_GET['id']))
+        {
+            signal();
+        }
+        else {
+            echo 'Erreur : aucun identifiant de commentaire envoyé';
+        }
+    }
 
     elseif ($_GET['action'] == 'modif') {
         if (isset($_GET['id']) && $_GET['id'] > 0) {

@@ -289,6 +289,7 @@ $(document).ready(function(){
                         <th>Auteur</th>
                         <th>Date</th>
                         <th>Commentaires</th>
+                        <th>Signalement</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -306,7 +307,8 @@ $(document).ready(function(){
 						</td>
                         <td><?= htmlspecialchars($comment['author']) ?></td>
                         <td><?= $comment['comment_date_fr'] ?></td>
-                        <td><?= htmlspecialchars($comment['comment']) ?></td>				
+                        <td><?= htmlspecialchars($comment['comment']) ?></td>
+                        <td><?= $comment['signalement'] ?></td>			
                         <td>
                             
                             <a href="./index.php?id=<?= $comment['id'] ?>&action=delcomm" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

@@ -70,6 +70,15 @@ function UptdatePost($title, $content, $id)
     ));    
 }
 
+function Signalement($id)
+{
+    $db = dbConnect();
+    $req = $db->prepare('UPDATE commentaires SET signalement = \'oui\' WHERE id= :id');
+    $req->execute(array(
+    'id' => $id
+    ));    
+}
+
 function deletePost($id)
 {
     $db = dbConnect();
@@ -78,6 +87,17 @@ function deletePost($id)
     'id' => $id    
     ));
 }
+
+function inscription(){
+    $req = $bdd->prepare('INSERT INTO membres(nom, prenom, pass, email, date_inscription) VALUES(:nom, :prenom, :pass, :email, NOW())');
+    $req->execute(array(
+        'nom' => $nom,
+        'prenom' => $prenom,
+        'pass' => $pass,
+        'email' => $email
+    ));
+}
+
 
 function dbConnect()
 {

@@ -32,6 +32,11 @@ function update(){
 	header('Location: ./view/crudView.php');
 }
 
+function signal(){
+	$Signalement= Signalement($_GET['id']);
+	header('Location: ./view/crudView.php');
+}
+
 function delete(){
 	$delete=deletePost($_GET['id']);
 	header('Location: ./view/adminView.php');

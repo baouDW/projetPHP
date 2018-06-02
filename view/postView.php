@@ -64,7 +64,7 @@ $title = $post['title'];
             {
             ?>
                 <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p><a href="">Signaler</a>
+                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p><a href="./index.php?action=signal&amp;id=<?= $comment['id'] ?>">Signaler</a>
             <?php
             }
             ?>
