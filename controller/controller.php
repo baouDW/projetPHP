@@ -58,3 +58,39 @@ function delcomm(){
 	$delcomm=deleteComment($_GET['id']);
 	header('Location: ./view/crudView.php');
 }
+
+function signup(){
+	$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+	$inscription=inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
+	//header('Location: ./view/crudView.php');
+}
+
+function login(){
+	
+	$verifuser = verifUser($_POST['pseudo']);	
+	$isPasswordCorrect = password_verify($_POST['pass'], $verifuser['pass']);
+	
+	if (!$verifuser)
+	{
+    	echo 'Mauvais identifiant ou mot de passe !';
+	}
+	else
+	{
+    	if (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin')){
+	        session_start();
+	        $_SESSION['id'] = $verifuser['id'];
+	        $_SESSION['pseudo'] = $_POST['pseudo'];
+	        header('Location: ./view/crudView.php');
+	    }
+	    elseif ($isPasswordCorrect){
+	    	session_start();
+	        $_SESSION['id'] = $verifuser['id'];
+	        $_SESSION['pseudo'] = $_POST['pseudo'];
+	        echo 'Vous êtes connecté !';
+	    }
+	    else{
+	    	echo "Mauvais identifiant ou mot de passe !";
+	    }
+	}
+
+}

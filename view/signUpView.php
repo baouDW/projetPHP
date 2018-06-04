@@ -102,7 +102,7 @@
 </head>
 <body>
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="../index.php?action=inscription" method="post">
         <h2>S'enregistrer</h2>
         <p class="hint-text">Crée un compte</p>
         <div class="form-group">
@@ -110,6 +110,9 @@
                 <div class="col-xs-6"><input type="text" class="form-control" name="Prenom" placeholder="Prenom" required="required"></div>
                 <div class="col-xs-6"><input type="text" class="form-control" name="Nom" placeholder="Nom" required="required"></div>
             </div>          
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="pseudo" placeholder="Pseudo" required="required">
         </div>
         <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Email" required="required">

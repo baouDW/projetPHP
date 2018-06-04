@@ -20,7 +20,7 @@ function getPost($postId)
 function getComments($postId)
 {
     $db = dbConnect();
-    $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaires WHERE post_id = ? ORDER BY comment_date DESC');
+    $comments = $db->prepare('SELECT id, author, comment, signalement, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM commentaires WHERE post_id = ? ORDER BY comment_date DESC');
     $comments->execute(array($postId));
 
     return $comments;
@@ -88,16 +88,34 @@ function deletePost($id)
     ));
 }
 
-function inscription(){
-    $req = $bdd->prepare('INSERT INTO membres(nom, prenom, pass, email, date_inscription) VALUES(:nom, :prenom, :pass, :email, NOW())');
-    $req->execute(array(
+function inscription($nom, $prenom, $pseudo, $pass, $email){
+    $db = dbConnect();
+    $req = $db->prepare('INSERT INTO membres(nom, prenom, pseudo, pass, email, date_inscription) VALUES(:nom, :prenom, :pseudo, :pass, :email, NOW())');
+        $req->execute(array(
         'nom' => $nom,
         'prenom' => $prenom,
+        'pseudo' => $pseudo,
         'pass' => $pass,
         'email' => $email
     ));
 }
 
+function getUser()
+{
+    $db = dbConnect();
+    $user = $db->prepare('SELECT nom, prenom, email, date_inscription FROM membres ORDER BY date_inscription DESC LIMIT 0, 2');    
+
+    return $user;
+}
+
+function verifUser($pseudo){
+    $db = dbConnect();
+    $req = $db->prepare('SELECT id, pass FROM membres WHERE pseudo = :pseudo');
+    $req->execute(array(
+    'pseudo' => $pseudo));
+    $resultat = $req->fetch();
+    return $resultat;    
+}
 
 function dbConnect()
 {

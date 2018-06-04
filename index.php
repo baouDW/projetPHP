@@ -76,6 +76,26 @@ if (isset($_GET['action'])) {
         }
     }
 
+    elseif ($_GET['action'] == 'inscription') {
+        if ($_POST['password'] == $_POST['confirm_password']) {           
+            signup();
+        }
+        else {
+            echo 'Mot de passe differents <p><a href="view/signUpView.php">Retour</a></p>' ;
+        }
+    }
+
+    elseif ($_GET['action'] == 'login') {
+        
+        if (isset($_POST['pseudo']) && isset($_POST['pass'])) {           
+            login();
+        }
+        else {
+            echo 'id et ou mdp manquant <p><a href="view/signUpView.php">Retour</a></p>' ;
+        }
+
+    }
+
 }
 else {
     listPosts();

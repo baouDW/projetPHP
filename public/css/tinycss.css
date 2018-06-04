@@ -1,0 +1,17 @@
+#editeur
+{
+    width: 500px; 
+    height: 200px; 
+    border: 2px solid black; 
+    padding: 5px; 
+    overflow: auto;
+}
+
+#editeur, #resultat 
+{ 
+  width: 500px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 5px;
+  overflow: auto;
+}

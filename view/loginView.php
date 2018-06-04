@@ -34,13 +34,13 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="crudView.php" method="post">
+    <form action="../index.php?action=login" method="post">
         <h2 class="text-center">S'identifier</h2>       
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" >
+            <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" required="">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" >
+            <input type="password" name="pass" class="form-control" placeholder="Mot de passe" required="">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">S'identifier</button>
