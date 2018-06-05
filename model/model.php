@@ -103,7 +103,7 @@ function inscription($nom, $prenom, $pseudo, $pass, $email){
 function getUser()
 {
     $db = dbConnect();
-    $user = $db->prepare('SELECT nom, prenom, email, date_inscription FROM membres ORDER BY date_inscription DESC LIMIT 0, 2');    
+    $user = $db->prepare('SELECT nom, prenom, email, date_inscription FROM membres ORDER BY date_inscription DESC');    
 
     return $user;
 }

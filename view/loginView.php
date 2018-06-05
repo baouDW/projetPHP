@@ -46,7 +46,7 @@
             <button type="submit" class="btn btn-primary btn-block">S'identifier</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox"> Se rappeler de moi</label>
+            <label class="pull-left checkbox-inline"><input type="checkbox" name="rapel"> Se rappeler de moi</label>
             
         </div>        
     </form>

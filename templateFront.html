@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,16 +39,23 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="view/loginView.php">S'identifier</a>
             </li>
+            <?php
+            if ((isset($_SESSION['pseudo'])) && ($_SESSION['pseudo'] == 'admin'))
+            {          
+            ?>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="view/crudView.php">Back office</a>
+            </li>
+            <?php
+            }
+            ?>
+            <li class="nav-item">
+              <em class="nav-link">Bonjour <?php echo $_SESSION['pseudo']; ?></em>
             </li>
           </ul>
         </div>

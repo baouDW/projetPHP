@@ -1,6 +1,6 @@
 <?php
 require('../model/model.php');
-$user= getUser();
+$user = getUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -268,7 +268,7 @@ $(document).ready(function(){
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>Articles</h2>
+						<h2>Membres</h2>
 					</div>
 					<div class="col-sm-6">						
 						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>						
@@ -302,7 +302,7 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
-                        <td><?= $data['nom'] ?></td>
+                        <td><?= $data['nom'] ?>kkk</td>
                         <td><?= $data['prenom'] ?></td>
                         <td><?= $data['email'] ?></td>	
                         <td><?= $data['date_inscription'] ?></td>			
@@ -310,8 +310,7 @@ $(document).ready(function(){
                             <a href="updateView.php?id=<?= $data['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="../index.php?id=<?= $data['id'] ?>&action=suppr" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
-                    </tr>
-					    
+                    </tr> 
 					<?php
 					}
 					$user->closeCursor();
@@ -326,15 +325,7 @@ $(document).ready(function(){
                      
                 </tbody>
             </table>
-			<div class="clearfix">
-                
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+			
         </div>
     </div>
 

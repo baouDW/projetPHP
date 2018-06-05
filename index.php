@@ -93,7 +93,6 @@ if (isset($_GET['action'])) {
         else {
             echo 'id et ou mdp manquant <p><a href="view/signUpView.php">Retour</a></p>' ;
         }
-
     }
 
 }

@@ -76,21 +76,29 @@ function login(){
 	}
 	else
 	{
-    	if (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin')){
+    	if (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (!isset($_POST['rapel']))){
 	        session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
 	        header('Location: ./view/crudView.php');
 	    }
-	    elseif ($isPasswordCorrect){
+	    elseif (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (isset($_POST['rapel']))) {
+	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
+			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
+	    }
+	    elseif (($isPasswordCorrect) && (!isset($_POST['rapel']))){
 	    	session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
 	        echo 'Vous êtes connecté !';
 	    }
+	    elseif (($isPasswordCorrect) && (isset($_POST['rapel'])) && ($_POST['pseudo'] !== 'admin')) {
+	    	echo "cookie en place";
+	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
+			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
+	    }
 	    else{
-	    	echo "Mauvais identifiant ou mot de passe !";
+	    	echo "Mauvais identifiant ou mot de passe !!!";
 	    }
 	}
-
 }
