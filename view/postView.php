@@ -1,4 +1,5 @@
 <?php
+session_start();
 //require('./model/model.php');
 //$post = getPost($_GET['id']);
 //$comments=getComments($_GET['id']);
@@ -44,7 +45,7 @@ $title = $post['title'];
                         Auteur
                     </label>
                     <br />           
-                    <input type="text" name="author">       
+                    <input type="text" name="author" value="<?php echo $_SESSION['pseudo'] ?>">       
                 </p>
                 <p>
                     <label for="comment">

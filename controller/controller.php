@@ -66,10 +66,11 @@ function signup(){
 }
 
 function login(){
-	
+	$posts= getPosts();
 	$verifuser = verifUser($_POST['pseudo']);	
 	$isPasswordCorrect = password_verify($_POST['pass'], $verifuser['pass']);
 	
+
 	if (!$verifuser)
 	{
     	echo 'Mauvais identifiant ou mot de passe !';
@@ -80,25 +81,45 @@ function login(){
 	        session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
-	        header('Location: ./view/crudView.php');
+	        require('./view/crudView.php');
 	    }
 	    elseif (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (isset($_POST['rapel']))) {
 	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
 			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
+			require('/view/crudView.php');
 	    }
 	    elseif (($isPasswordCorrect) && (!isset($_POST['rapel']))){
 	    	session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
-	        echo 'Vous êtes connecté !';
+	        header('Location: ./index.php');
 	    }
 	    elseif (($isPasswordCorrect) && (isset($_POST['rapel'])) && ($_POST['pseudo'] !== 'admin')) {
-	    	echo "cookie en place";
 	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
 			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
+			header('Location: ./index.php');
 	    }
 	    else{
 	    	echo "Mauvais identifiant ou mot de passe !!!";
 	    }
 	}
+}
+
+function adminaccess(){
+	$posts= getPosts();
+	require('/view/crudView.php');
+}
+
+function deconexion(){
+		
+	session_start();
+
+	// Suppression des variables de session et de la session
+	$_SESSION = array();
+	session_destroy();
+
+	// Suppression des cookies de connexion automatique
+	setcookie('id', '');
+	setcookie('pseudo', '');
+	header('Location: ./index.php');
 }

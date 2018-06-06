@@ -31,9 +31,6 @@ while ($data = $posts->fetch())
 }
 $posts->closeCursor();
 ?>
-<!-- Pager -->
-    <div class="clearfix">
-        <a class="btn btn-primary float-right" href="#">Post précedent &rarr;</a>
-    </div>
+
 <?php $content = ob_get_clean(); ?>
 <?php require('./templateFront.html'); ?>

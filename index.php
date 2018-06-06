@@ -95,6 +95,16 @@ if (isset($_GET['action'])) {
         }
     }
 
+    elseif ($_GET['action'] == 'adminaccess') {
+        adminaccess();
+        
+    }
+
+    elseif ($_GET['action'] == 'deconexion') {
+        deconexion();
+        
+    }
+
 }
 else {
     listPosts();

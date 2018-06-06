@@ -1,4 +1,4 @@
-
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -27,6 +27,8 @@
 
       <input type="button" onclick="resultat();" value="Obtenir le HTML" ></code><br />
     <textarea id="resultat"></textarea>
+    <?php $content = ob_get_clean(); ?>
+    <?php require('./templateBackend.php'); ?>
   </body>
 </html>
 

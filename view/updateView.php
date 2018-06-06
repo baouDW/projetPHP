@@ -1,4 +1,5 @@
 <?php
+session_start();
 require('../model/model.php');
 $post= getPost($_GET['id']);
 ?>
