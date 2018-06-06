@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 //require('./model/model.php');
 //$post = getPost($_GET['id']);
 //$comments=getComments($_GET['id']);
@@ -45,7 +45,13 @@ $title = $post['title'];
                         Auteur
                     </label>
                     <br />           
-                    <input type="text" name="author" value="<?php echo $_SESSION['pseudo'] ?>">       
+                    <input type="text" name="author" value="<?php if (isset($_SESSION['pseudo'])) {
+                        echo $_SESSION['pseudo'] ;
+                    }elseif (isset($_COOKIE['pseudo'])) {
+                        echo $_COOKIE['pseudo'] ;
+
+                    }?>"> 
+
                 </p>
                 <p>
                     <label for="comment">
@@ -75,3 +81,5 @@ $title = $post['title'];
             <?php require('./templateFront.html'); ?>
         </div>
 </html>
+
+

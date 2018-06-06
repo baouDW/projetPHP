@@ -246,8 +246,7 @@ $(document).ready(function(){
 						<h2>Chapitres</h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="view/createpostView.php" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Cree un article</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>						
+						<a href="view/createpostView.php" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Cree un article</span></a>												
 					</div>
                 </div>
             </div>
@@ -255,10 +254,7 @@ $(document).ready(function(){
                 <thead>
                     <tr>
 						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
+							
 						</th>
                         <th>Titre</th>
                         <th>Date</th>
@@ -272,17 +268,13 @@ $(document).ready(function(){
 					{
 					?> 
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
+						<td>							
 						</td>
-                        <td><a href="../index.php?id=<?= $data['id'] ?>&action=comm"><?= htmlspecialchars($data['title']) ?></td>
+                        <td><a href="index.php?id=<?= $data['id'] ?>&action=comm"><?= htmlspecialchars($data['title']) ?></td>
                         <td><?= $data['creation_date_fr'] ?></td>
                         <td><a href="index.php?action=commadmin&amp;id=<?= $data['id'] ?>">Gerer les commentaires</a></td>				
                         <td>
-                            <a href="view/updateView.php?id=<?= $data['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="./index.php?action=upview&id=<?= $data['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="index.php?id=<?= $data['id'] ?>&action=suppr" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>

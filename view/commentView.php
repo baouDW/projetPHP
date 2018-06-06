@@ -3,6 +3,7 @@
 //require('../model/model.php');
 
 ?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -271,20 +272,12 @@ $(document).ready(function(){
                     <div class="col-sm-6">
 						<h2>Commentaires</h2>
 					</div>
-					<div class="col-sm-6">
-						<!-- <a href="createpostView.php" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Cree un article</span></a> -->
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>						
-					</div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
+						<th>							
 						</th>
                         <th>Auteur</th>
                         <th>Date</th>
@@ -300,10 +293,6 @@ $(document).ready(function(){
 					?> 
 					<tr>
 						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
 						</td>
                         <td><?= htmlspecialchars($comment['author']) ?></td>
                         <td><?= $comment['comment_date_fr'] ?></td>
@@ -322,107 +311,10 @@ $(document).ready(function(){
                      
                 </tbody>
             </table>
-			<div class="clearfix">
-                
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                </ul>
-            </div>
+			
         </div>
     </div>
-	<!-- Edit Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Add Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" value="Add">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Edit Modal HTML -->
-	<div id="editEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Edit Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
-						</div>
-						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>					
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-info" value="Save">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Delete Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<p>Are you sure you want to delete these Records?</p>
-						<p class="text-warning"><small>This action cannot be undone.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+	<?php $content = ob_get_clean(); ?>
+	<?php require('./templateBackend.php'); ?>
 </body>
 </html>   

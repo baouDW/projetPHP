@@ -1,4 +1,5 @@
 <?php
+
 require('controller/controller.php');
 
 if (isset($_GET['action'])) {
@@ -102,6 +103,15 @@ if (isset($_GET['action'])) {
 
     elseif ($_GET['action'] == 'deconexion') {
         deconexion();
+        
+    }
+
+    elseif ($_GET['action'] == 'membreView') {
+       membreView();        
+        
+    }
+    elseif ($_GET['action'] == 'upview') {
+       updateView();        
         
     }
 

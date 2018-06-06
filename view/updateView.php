@@ -1,10 +1,11 @@
 <?php
-session_start();
-require('../model/model.php');
-$post= getPost($_GET['id']);
+//session_start();
+//require('../model/model.php');
+//$post= getPost($_GET['id']);
 ?>
+<?php ob_start(); ?>
 <div>
-    <form method="post" action="../index.php?id=<?php echo $_GET['id'] ?>&action=modif">
+    <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modif">
         <p>
            <label for="titre">
           Titre
@@ -22,7 +23,5 @@ $post= getPost($_GET['id']);
        <p><input type="submit" name="ajouter"></p>
     </form>
 </div>
-
-<?php
-echo $post['title']."". $post['content']."".$_GET['id']."".$post['id'];
-?>
+<?php $content = ob_get_clean(); ?>
+<?php require('./templateBackend.php'); ?>

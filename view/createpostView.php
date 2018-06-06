@@ -1,4 +1,52 @@
-<?php ob_start(); ?>
+<?php
+require('../model/model.php');
+$posts= getPosts();
+?>
+<a href="../index.php">Retour a l'accueil</a>
+<div>
+    <form method="post" action="../index.php?action=insertPost">
+        <p>
+           <label for="titre">
+          Titre
+           </label>
+           <br />           
+           <input type="text" name="titre">       
+       </p>
+       <p>
+           <label for="texte">
+          Texte
+           </label>
+           <br />           
+           <textarea name="texte" id="texte" rows="10" cols="50"></textarea>       
+       </p>
+       <p><input type="submit" name="ajouter" value="Ajouter un article"></p>
+    </form>
+</div>
+<?php
+while ($data = $posts->fetch())
+{
+?>    
+    <div class="news">
+        <h3>
+            <?= htmlspecialchars($data['title']) ?>
+            <em>le <?= $data['creation_date_fr'] ?></em>
+        </h3>
+                
+        <p>
+            <?= nl2br(htmlspecialchars($data['content'])) ?>
+            <br />
+            <em><a href="../index.php?id=<?= $data['id'] ?>&action=comm">Afficher les commentaires</a></em>
+            <em><a href="updateView.php?id=<?= $data['id'] ?>">Modifier</a></em>
+            <em><a href="../index.php?id=<?= $data['id'] ?>&action=suppr">supprimer</a></em>
+        </p>
+    </div>
+<?php
+}
+$posts->closeCursor();
+?> 
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,6 +56,16 @@
     <script src="../public/js/editeur.js"></script>
   </head>
   <body>
+    <form method="post" action="../index.php?id=<?php echo $_GET['id'] ?>&action=insertPost">
+        <p>
+           <label for="titre">
+          Titre
+           </label>
+           <br />           
+           <input type="text" name="titre" >       
+       </p>
+
+
       <input type="button" value="G" style="font-weight:bold;" onclick="commande('bold');" ></code> 
       <input type="button" value="I" style="font-style:italic;" onclick="commande('italic');" ></code> 
       <input type="button" value="S" style="text-decoration:underline;" onclick="commande('underline');" ></code>  
@@ -27,8 +85,7 @@
 
       <input type="button" onclick="resultat();" value="Obtenir le HTML" ></code><br />
     <textarea id="resultat"></textarea>
-    <?php $content = ob_get_clean(); ?>
-    <?php require('./templateBackend.php'); ?>
+
   </body>
 </html>
 

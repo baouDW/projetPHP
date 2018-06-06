@@ -1,4 +1,8 @@
 <?php
+session_start();
+
+
+
 require('./model/model.php');
 
 function listPosts(){
@@ -27,9 +31,14 @@ function addComment(/*$postId, $author, $comment*/)
     }
 }
 
+function updateView(){
+	$post= getPost($_GET['id']);
+	require('./view/updateView.php');
+}
+
 function update(){
 	$update= UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
-	header('Location: ./view/crudView.php');
+	header('Location: ./index.php?action=adminaccess');
 }
 
 function signal(){
@@ -39,7 +48,7 @@ function signal(){
 
 function delete(){
 	$delete=deletePost($_GET['id']);
-	header('Location: ./view/adminView.php');
+	header('Location: ./index.php?action=adminaccess');
 }
 
 function posts(){
@@ -54,9 +63,14 @@ function commentsAdmin(){
 	require('./view/commentView.php');
 }
 
+function membreView(){
+	$user = getUser();
+	require('./view/userView.php');
+}
+
 function delcomm(){
 	$delcomm=deleteComment($_GET['id']);
-	header('Location: ./view/crudView.php');
+	header('Location: ./index.php?action=adminaccess');
 }
 
 function signup(){
@@ -78,6 +92,7 @@ function login(){
 	else
 	{
     	if (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (!isset($_POST['rapel']))){
+    		session_destroy();
 	        session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
@@ -123,3 +138,4 @@ function deconexion(){
 	setcookie('pseudo', '');
 	header('Location: ./index.php');
 }
+

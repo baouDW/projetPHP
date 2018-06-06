@@ -1,7 +1,8 @@
 <?php
-require('../model/model.php');
-$user = getUser();
+//require('../model/model.php');
+//$user = getUser();
 ?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -236,31 +237,6 @@ $user = getUser();
 		font-weight: normal;
 	}	
 </style>
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-	// Activate tooltip
-	$('[data-toggle="tooltip"]').tooltip();
-	
-	// Select/Deselect checkboxes
-	var checkbox = $('table tbody input[type="checkbox"]');
-	$("#selectAll").click(function(){
-		if(this.checked){
-			checkbox.each(function(){
-				this.checked = true;                        
-			});
-		} else{
-			checkbox.each(function(){
-				this.checked = false;                        
-			});
-		} 
-	});
-	checkbox.click(function(){
-		if(!this.checked){
-			$("#selectAll").prop("checked", false);
-		}
-	});
-});
-</script> -->
 </head>
 <body>
     <div class="container">
@@ -269,10 +245,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-6">
 						<h2>Membres</h2>
-					</div>
-					<div class="col-sm-6">						
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Supprimer</span></a>						
-					</div>
+					</div>					
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -294,7 +267,7 @@ $(document).ready(function(){
                 	<?php
 					while ($data = $user->fetch())
 					{
-					?> 
+					?>
 					<tr>
 						<td>
 							<span class="custom-checkbox">
@@ -329,7 +302,8 @@ $(document).ready(function(){
         </div>
     </div>
 
-
+	<?php $content = ob_get_clean(); ?>
+	<?php require('./templateBackend.php'); ?>
 
 
 	
