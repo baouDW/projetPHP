@@ -3,7 +3,14 @@
 //$posts= getPosts();
 $title = 'Accueil'; 
 ?>
-
+<style>
+  .lire-suite
+  {
+    color:blue;
+    font-size: 0.7em;
+    font-weight: bold;
+  }
+</style>
 
 
 
@@ -20,7 +27,7 @@ while ($data = $posts->fetch())
                 <?= htmlspecialchars($data['title']) ?>
               </h2>
               <h3 class="post-subtitle">
-                extrait
+                <p><?= substr($data['content'], 0, 200); ?><span class="lire-suite">...Lire la suite</span></p>
               </h3>
             </a>
             <p class="post-meta">Poster le <?= $data['creation_date_fr'] ?></p>
@@ -33,4 +40,4 @@ $posts->closeCursor();
 ?>
 
 <?php $content = ob_get_clean(); ?>
-<?php require('./templateFront.html'); ?>
+<?php require('templateFront.html'); ?>

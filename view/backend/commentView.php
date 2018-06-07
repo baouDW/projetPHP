@@ -1,7 +1,5 @@
-<?php
-//require('../model/model.php');
-//$user = getUser();
-?>
+
+
 <?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -153,89 +151,7 @@
         margin-top: 10px;
         font-size: 13px;
     }    
-	/* Custom checkbox */
-	.custom-checkbox {
-		position: relative;
-	}
-	.custom-checkbox input[type="checkbox"] {    
-		opacity: 0;
-		position: absolute;
-		margin: 5px 0 0 3px;
-		z-index: 9;
-	}
-	.custom-checkbox label:before{
-		width: 18px;
-		height: 18px;
-	}
-	.custom-checkbox label:before {
-		content: '';
-		margin-right: 10px;
-		display: inline-block;
-		vertical-align: text-top;
-		background: white;
-		border: 1px solid #bbb;
-		border-radius: 2px;
-		box-sizing: border-box;
-		z-index: 2;
-	}
-	.custom-checkbox input[type="checkbox"]:checked + label:after {
-		content: '';
-		position: absolute;
-		left: 6px;
-		top: 3px;
-		width: 6px;
-		height: 11px;
-		border: solid #000;
-		border-width: 0 3px 3px 0;
-		transform: inherit;
-		z-index: 3;
-		transform: rotateZ(45deg);
-	}
-	.custom-checkbox input[type="checkbox"]:checked + label:before {
-		border-color: #03A9F4;
-		background: #03A9F4;
-	}
-	.custom-checkbox input[type="checkbox"]:checked + label:after {
-		border-color: #fff;
-	}
-	.custom-checkbox input[type="checkbox"]:disabled + label:before {
-		color: #b8b8b8;
-		cursor: auto;
-		box-shadow: none;
-		background: #ddd;
-	}
-	/* Modal styles */
-	.modal .modal-dialog {
-		max-width: 400px;
-	}
-	.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-		padding: 20px 30px;
-	}
-	.modal .modal-content {
-		border-radius: 3px;
-	}
-	.modal .modal-footer {
-		background: #ecf0f1;
-		border-radius: 0 0 3px 3px;
-	}
-    .modal .modal-title {
-        display: inline-block;
-    }
-	.modal .form-control {
-		border-radius: 2px;
-		box-shadow: none;
-		border-color: #dddddd;
-	}
-	.modal textarea.form-control {
-		resize: vertical;
-	}
-	.modal .btn {
-		border-radius: 2px;
-		min-width: 100px;
-	}	
-	.modal form label {
-		font-weight: normal;
-	}	
+		
 </style>
 </head>
 <body>
@@ -244,70 +160,51 @@
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>Membres</h2>
-					</div>					
+						<h2>Commentaires</h2>
+					</div>
                 </div>
             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
+						<th>							
 						</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Email</th>
-                        <th>Date d'inscription</th>
+                        <th>Auteur</th>
+                        <th>Date</th>
+                        <th>Commentaires</th>
+                        <th>Signalement</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                 	<?php
-					while ($data = $user->fetch())
+					while ($comment = $comments->fetch())
 					{
-					?>
+					?> 
 					<tr>
 						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
 						</td>
-                        <td><?= $data['nom'] ?>kkk</td>
-                        <td><?= $data['prenom'] ?></td>
-                        <td><?= $data['email'] ?></td>	
-                        <td><?= $data['date_inscription'] ?></td>			
+                        <td><?= htmlspecialchars($comment['author']) ?></td>
+                        <td><?= $comment['comment_date_fr'] ?></td>
+                        <td><?= htmlspecialchars($comment['comment']) ?></td>
+                        <td><?= $comment['signalement'] ?></td>			
                         <td>
-                            <a href="updateView.php?id=<?= $data['id'] ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                            <a href="../index.php?id=<?= $data['id'] ?>&action=suppr" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                            
+                            <a href="./index.php?id=<?= $comment['id'] ?>&action=delcomm" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
-                    </tr> 
+                    </tr>
+					    
 					<?php
 					}
-					$user->closeCursor();
+					$comments->closeCursor();
 					?>
-                    
-
-
-
-
-
-
                      
                 </tbody>
             </table>
 			
         </div>
     </div>
-
 	<?php $content = ob_get_clean(); ?>
-	<?php require('./templateBackend.php'); ?>
-
-
-	
-	
-	
+	<?php require('templateBackend.php'); ?>
 </body>
 </html>   

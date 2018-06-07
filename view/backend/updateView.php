@@ -1,8 +1,4 @@
-<?php
-//session_start();
-//require('../model/model.php');
-//$post= getPost($_GET['id']);
-?>
+
 <?php ob_start(); ?>
 <div>
     <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modif">
@@ -24,4 +20,4 @@
     </form>
 </div>
 <?php $content = ob_get_clean(); ?>
-<?php require('./templateBackend.php'); ?>
+<?php require('templateBackend.php'); ?>

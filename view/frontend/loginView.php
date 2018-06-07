@@ -34,7 +34,7 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="../index.php?action=login" method="post">
+    <form action="../../index.php?action=login" method="post">
         <h2 class="text-center">S'identifier</h2>       
         <div class="form-group">
             <input type="text" name="pseudo" class="form-control" placeholder="Pseudo" required="">

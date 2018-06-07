@@ -1,10 +1,30 @@
 <?php
-require('../model/model.php');
-$posts= getPosts();
+require('../../model/model.php');
+$manager = new Manager();
+$posts= $manager->getPosts();
 ?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mon éditeur WYSIWYG</title>
+    <link rel="stylesheet" href="../public/css/tinycss.css">
+    <script src="../public/js/editeur.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
+  </head>
+  <body>
+    
+
+
+
+
+
+
 <a href="../index.php">Retour a l'accueil</a>
+
 <div>
-    <form method="post" action="../index.php?action=insertPost">
+    <form method="post" action="../../index.php?action=insertPost">
         <p>
            <label for="titre">
           Titre
@@ -26,7 +46,7 @@ $posts= getPosts();
 while ($data = $posts->fetch())
 {
 ?>    
-    <div class="news">
+     <div class="news">
         <h3>
             <?= htmlspecialchars($data['title']) ?>
             <em>le <?= $data['creation_date_fr'] ?></em>
@@ -39,8 +59,17 @@ while ($data = $posts->fetch())
             <em><a href="updateView.php?id=<?= $data['id'] ?>">Modifier</a></em>
             <em><a href="../index.php?id=<?= $data['id'] ?>&action=suppr">supprimer</a></em>
         </p>
-    </div>
+    </div> 
 <?php
 }
 $posts->closeCursor();
-?>
+?> 
+
+
+
+
+  </body>
+</html>
+
+
+

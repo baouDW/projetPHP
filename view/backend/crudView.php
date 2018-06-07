@@ -1,9 +1,5 @@
 
-<?php
-//require('./model/model.php');
 
-//$posts= getPosts();
-?>
 <?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -177,64 +173,9 @@
 		box-shadow: none;
 		background: #ddd;
 	}
-	/* Modal styles */
-	.modal .modal-dialog {
-		max-width: 400px;
-	}
-	.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-		padding: 20px 30px;
-	}
-	.modal .modal-content {
-		border-radius: 3px;
-	}
-	.modal .modal-footer {
-		background: #ecf0f1;
-		border-radius: 0 0 3px 3px;
-	}
-    .modal .modal-title {
-        display: inline-block;
-    }
-	.modal .form-control {
-		border-radius: 2px;
-		box-shadow: none;
-		border-color: #dddddd;
-	}
-	.modal textarea.form-control {
-		resize: vertical;
-	}
-	.modal .btn {
-		border-radius: 2px;
-		min-width: 100px;
-	}	
-	.modal form label {
-		font-weight: normal;
-	}	
+		
 </style>
-<!-- <script type="text/javascript">
-$(document).ready(function(){
-	// Activate tooltip
-	$('[data-toggle="tooltip"]').tooltip();
-	
-	// Select/Deselect checkboxes
-	var checkbox = $('table tbody input[type="checkbox"]');
-	$("#selectAll").click(function(){
-		if(this.checked){
-			checkbox.each(function(){
-				this.checked = true;                        
-			});
-		} else{
-			checkbox.each(function(){
-				this.checked = false;                        
-			});
-		} 
-	});
-	checkbox.click(function(){
-		if(!this.checked){
-			$("#selectAll").prop("checked", false);
-		}
-	});
-});
-</script> -->
+
 </head>
 <body>
 	
@@ -246,7 +187,7 @@ $(document).ready(function(){
 						<h2>Chapitres</h2>
 					</div>
 					<div class="col-sm-6">
-						<a href="view/createpostView.php" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Cree un article</span></a>												
+						<a href="view/backend/createpostView.php" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Ecrire un chapitre</span></a>												
 					</div>
                 </div>
             </div>
@@ -282,26 +223,13 @@ $(document).ready(function(){
 					<?php
 					}
 					$posts->closeCursor();
-					?>
-                    
-
-
-
-
-
-
-                     
+					?>                   
                 </tbody>
             </table>
 			
         </div>
-    </div>
-    
-    
-	
-	
-	
+    </div>	
     <?php $content = ob_get_clean(); ?>
-<?php require('./templateBackend.php'); ?>
+	<?php require('templateBackend.php'); ?>
 </body>
 </html>   

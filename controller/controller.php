@@ -6,21 +6,22 @@ session_start();
 require('./model/model.php');
 
 function listPosts(){
-	$posts= getPosts();
-	require('./view/accueilView.php');
+	$manager = new Manager();
+	$posts= $manager->getPosts();
+	require('./view/frontend/accueilView.php');
 }
 
 function insertP(){
-
-	$insertPost= insertPost($_POST['titre'], $_POST['texte']);
-
-	header('Location: ./view/adminView.php');
+	$manager = new Manager();
+	$insertPost= $manager->insertPost($_POST['titre'], $_POST['texte']);
+	header('Location: ./view/backend/createpostView.php');
 }
 
 function addComment(/*$postId, $author, $comment*/)
 {
+	$manager = new Manager();
     //$affectedLines = postComment($postId, $author, $comment);
-    $affectedLines = postComment($_GET['id'], $_POST['author'], $_POST['comment']);
+    $affectedLines = $manager->postComment($_GET['id'], $_POST['author'], $_POST['comment']);
 
     if ($affectedLines === false) {
         die('Impossible d\'ajouter le commentaire !');
@@ -32,56 +33,66 @@ function addComment(/*$postId, $author, $comment*/)
 }
 
 function updateView(){
-	$post= getPost($_GET['id']);
-	require('./view/updateView.php');
+	$manager = new Manager();
+	$post= $manager->getPost($_GET['id']);
+	require('./view/backend/updateView.php');
 }
 
 function update(){
-	$update= UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
+	$manager = new Manager();
+	$update= $manager->UptdatePost($_POST['titre'], $_POST['texte'], $_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function signal(){
-	$Signalement= Signalement($_GET['id']);
-	header('Location: ./view/crudView.php');
+	$manager = new Manager();
+	$Signalement= $manager->Signalement($_GET['id']);
+	header('Location: ./index.php');
 }
 
 function delete(){
-	$delete=deletePost($_GET['id']);
+	$manager = new Manager();
+	$delete= $manager->deletePost($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function posts(){
-	$post= getPost($_GET['id']);
-	$comments=getComments($_GET['id']);
-	require('./view/postView.php');
+	$manager = new Manager();
+	$post= $manager->getPost($_GET['id']);
+	$comments= $manager->getComments($_GET['id']);
+	require('./view/frontend/postView.php');
 }
 
 function commentsAdmin(){
-	$post= getPost($_GET['id']);
-	$comments=getComments($_GET['id']);
-	require('./view/commentView.php');
+	$manager = new Manager();
+	$post= $manager->getPost($_GET['id']);
+	$comments= $manager->getComments($_GET['id']);
+	require('./view/backend/commentView.php');
 }
 
 function membreView(){
-	$user = getUser();
-	require('./view/userView.php');
+	$manager = new Manager();
+	$user = $manager->getUser();
+	require('./view/backend/userView.php');
 }
 
 function delcomm(){
-	$delcomm=deleteComment($_GET['id']);
+	$manager = new Manager();
+	$delcomm= $manager->deleteComment($_GET['id']);
 	header('Location: ./index.php?action=adminaccess');
 }
 
 function signup(){
+	$manager = new Manager();
 	$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	$inscription=inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
-	//header('Location: ./view/crudView.php');
+	$inscription= $manager->inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
+	header('Location: ../../index.php');
 }
 
 function login(){
-	$posts= getPosts();
-	$verifuser = verifUser($_POST['pseudo']);	
+	$manager = new Manager();
+	$posts= $manager->getPosts();
+	$verifuser = $manager->verifUser($_POST['pseudo']);	
 	$isPasswordCorrect = password_verify($_POST['pass'], $verifuser['pass']);
 	
 
@@ -96,12 +107,12 @@ function login(){
 	        session_start();
 	        $_SESSION['id'] = $verifuser['id'];
 	        $_SESSION['pseudo'] = $_POST['pseudo'];
-	        require('./view/crudView.php');
+	        require('./view/backend/crudView.php');
 	    }
 	    elseif (($isPasswordCorrect) && ($_POST['pseudo'] == 'admin') && (isset($_POST['rapel']))) {
 	    	setcookie('id', $verifuser['id'], time() + 365*24*3600, null, null, false, true); 
 			setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
-			require('/view/crudView.php');
+			require('/view/backend/crudView.php');
 	    }
 	    elseif (($isPasswordCorrect) && (!isset($_POST['rapel']))){
 	    	session_start();
@@ -121,8 +132,9 @@ function login(){
 }
 
 function adminaccess(){
-	$posts= getPosts();
-	require('/view/crudView.php');
+	$manager = new Manager();
+	$posts= $manager->getPosts();
+	require('/view/backend/crudView.php');
 }
 
 function deconexion(){

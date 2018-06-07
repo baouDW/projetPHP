@@ -82,7 +82,7 @@ if (isset($_GET['action'])) {
             signup();
         }
         else {
-            echo 'Mot de passe differents <p><a href="view/signUpView.php">Retour</a></p>' ;
+            echo 'Mot de passe differents <p><a href="view/frontend/signUpView.php">Retour</a></p>' ;
         }
     }
 

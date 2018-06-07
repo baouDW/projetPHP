@@ -26,7 +26,7 @@
   <div class="menu-lat">
     <div class="contain-lateral">
       <div class="item-lateral"><a href="index.php?action=adminaccess">accueil admin</a></div>
-      <div class="item-lateral"><a href="view/createpostView.php">écrire un chapitre</a></div>
+      <div class="item-lateral"><a href="view/backend/createpostView.php">écrire un chapitre</a></div>
       <div class="item-lateral"><a href="index.php?action=membreView">Voir les membres</a></div>
     </div>
     <div class="">

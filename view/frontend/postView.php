@@ -1,8 +1,4 @@
 <?php
-//session_start();
-//require('./model/model.php');
-//$post = getPost($_GET['id']);
-//$comments=getComments($_GET['id']);
 $title = $post['title'];
 ?>
 <!-- Page Header -->
@@ -21,8 +17,7 @@ $title = $post['title'];
         </div>
       </div>
     </header>
-
-    <!-- Post Content -->
+    
     <article>
       <div class="container">
         <div class="row">
@@ -78,7 +73,7 @@ $title = $post['title'];
             <!--$posts->closeCursor();-->
             <?php $content = ob_get_clean(); ?>
             
-            <?php require('./templateFront.html'); ?>
+            <?php require('templateFront.html'); ?>
         </div>
 </html>
 
