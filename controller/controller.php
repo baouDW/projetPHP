@@ -86,7 +86,7 @@ function signup(){
 	$manager = new Manager();
 	$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
 	$inscription= $manager->inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
-	header('Location: ../../index.php');
+	header('Location: ./index.php');
 }
 
 function login(){

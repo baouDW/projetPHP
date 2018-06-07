@@ -102,7 +102,7 @@
 </head>
 <body>
 <div class="signup-form">
-    <form action="../index.php?action=inscription" method="post">
+    <form action="../../index.php?action=inscription" method="post">
         <h2>S'enregistrer</h2>
         <p class="hint-text">Crée un compte</p>
         <div class="form-group">

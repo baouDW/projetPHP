@@ -78,8 +78,7 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'inscription') {
-        if ($_POST['password'] == $_POST['confirm_password']) {           
-            signup();
+        if ($_POST['password'] == $_POST['confirm_password']) {    signup();
         }
         else {
             echo 'Mot de passe differents <p><a href="view/frontend/signUpView.php">Retour</a></p>' ;
