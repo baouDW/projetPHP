@@ -101,6 +101,7 @@
 </style>
 </head>
 <body>
+    <a href="../../index.php">Retour a l'accueil</a>
 <div class="signup-form">
     <form action="../../index.php?action=inscription" method="post">
         <h2>S'enregistrer</h2>
@@ -124,7 +125,7 @@
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirmer mot de passe" required="required">
         </div>        
         <div class="form-group">
-            <label class="checkbox-inline"><input type="checkbox" required="required"> J'accepte les <a href="#">Condition d'utilisation</a> &amp; <a href="#">politique de vie privé.</a></label>
+            <label class="checkbox-inline"><input type="checkbox" required="required"> J'accepte les <a href="confidentialitéView.html">Condition d'utilisation</a> &amp; <a href="confidentialitéView.html">politique de vie privé.</a></label>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg btn-block">S'enregistrer</button>

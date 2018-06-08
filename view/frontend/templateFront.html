@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,8 +86,7 @@
                   echo $_COOKIE['pseudo'];
                 }elseif (isset($_SESSION['pseudo'])){
                   echo $_SESSION['pseudo'];
-              }          
-
+                }  
                 ?>
                   
                 </em>
@@ -119,10 +115,8 @@
     <!-- Main Content -->
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">               
-          <?= $content ?>
-
-          
+        <div class="col-lg-8 col-md-10 mx-auto">          
+          <?= $content ?>              
         </div>
       </div>
     </div>
@@ -151,11 +145,6 @@
                   </span>
                 </a>
               </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  
-                </a>
-              </li>
             </ul>
             <p class="copyright text-muted">Copyright &copy; Projet DWJ 2018</p>
           </div>
@@ -164,12 +153,12 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="public/vendor/jquery/jquery.min.js"></script>
+    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="clean-blog.min.js"></script>
-    <script src="clean-blog.js"></script>
+    <script src="js/clean-blog.min.js"></script>
+
   </body>
 
 </html>

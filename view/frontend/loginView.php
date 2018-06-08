@@ -33,6 +33,7 @@
 </style>
 </head>
 <body>
+    <a href="../../index.php">Retour a l'accueil</a>
 <div class="login-form">
     <form action="../../index.php?action=login" method="post">
         <h2 class="text-center">S'identifier</h2>       

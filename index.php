@@ -96,7 +96,10 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'adminaccess') {
-        adminaccess();
+        if ((isset($_SESSION['pseudo'])) && ($_SESSION['pseudo'] == 'admin'))
+            {
+                adminaccess();
+            }
         
     }
 
