@@ -1,7 +1,7 @@
 <?php
-require('../../model/model.php');
-$manager = new Manager();
-$posts= $manager->getPosts();
+//require('../../model/model.php');
+//$manager = new Manager();
+//$posts= $manager->getPosts();
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@ $posts= $manager->getPosts();
 <?php ob_start(); ?>
 
 <div>
-    <form method="post" action="../../index.php?action=insertPost">
+    <form method="post" action="index.php?action=insertPost">
         <p>
            <label for="titre">
           Titre
@@ -41,6 +41,7 @@ $posts= $manager->getPosts();
        <p><input type="submit" name="ajouter" value="Ajouter un article"></p>
     </form>
 </div>
+<h2>Apercu des chapitres</h2>
 <?php
 while ($data = $posts->fetch())
 {
@@ -48,15 +49,10 @@ while ($data = $posts->fetch())
      <div class="news">
         <h3>
             <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
         </h3>
                 
         <p>
-            <?= nl2br($data['content']) ?>
-            <br />
-            <em><a href="../index.php?id=<?= $data['id'] ?>&action=comm">Afficher les commentaires</a></em>
-            <em><a href="updateView.php?id=<?= $data['id'] ?>">Modifier</a></em>
-            <em><a href="../index.php?id=<?= $data['id'] ?>&action=suppr">supprimer</a></em>
+            <?= nl2br($data['content']) ?>            
         </p>
     </div> 
 <?php

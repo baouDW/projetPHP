@@ -14,7 +14,7 @@ function listPosts(){
 function insertP(){
 	$manager = new Manager();
 	$insertPost= $manager->insertPost($_POST['titre'], $_POST['texte']);	
-	header('Location: ./view/backend/createpostView.php');
+	header('Location: ./index.php?action=createView');
 }
 
 function addComment()
@@ -34,6 +34,12 @@ function updateView(){
 	$manager = new Manager();
 	$post= $manager->getPost($_GET['id']);
 	require('./view/backend/updateView.php');
+}
+
+function createView(){
+	$manager = new Manager();
+	$posts= $manager->getPosts();
+	require('./view/backend/createpostView.php');
 }
 
 function update(){

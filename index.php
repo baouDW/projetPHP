@@ -114,6 +114,11 @@ if (isset($_GET['action'])) {
         
     }
 
+    elseif ($_GET['action'] == 'createView') {
+       createView();        
+        
+    }
+
 }
 else {
     listPosts();
