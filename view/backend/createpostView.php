@@ -7,11 +7,11 @@ $posts= $manager->getPosts();
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Mon éditeur WYSIWYG</title>
+    <title>Ecrire un chapitre</title>
     <link rel="stylesheet" href="../public/css/tinycss.css">
     <script src="../public/js/editeur.js"></script>
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>
+    <!--<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>-->
   </head>
   <body>
     
@@ -20,8 +20,7 @@ $posts= $manager->getPosts();
 
 
 
-
-<a href="../index.php">Retour a l'accueil</a>
+<?php ob_start(); ?>
 
 <div>
     <form method="post" action="../../index.php?action=insertPost">
@@ -53,7 +52,7 @@ while ($data = $posts->fetch())
         </h3>
                 
         <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
+            <?= nl2br($data['content']) ?>
             <br />
             <em><a href="../index.php?id=<?= $data['id'] ?>&action=comm">Afficher les commentaires</a></em>
             <em><a href="updateView.php?id=<?= $data['id'] ?>">Modifier</a></em>
@@ -66,7 +65,8 @@ $posts->closeCursor();
 ?> 
 
 
-
+<?php $content = ob_get_clean(); ?>
+<?php require('templateBackend.php'); ?>
 
   </body>
 </html>

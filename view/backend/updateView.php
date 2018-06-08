@@ -14,7 +14,7 @@
           Texte
            </label>
            <br />           
-           <textarea name="texte" id="texte" rows="10" cols="50" ><?php echo $post['content'] ?></textarea>       
+           <textarea name="texte" id="texte" rows="10" cols="50" ><?php echo strip_tags($post['content']) ?></textarea>       
        </p>
        <p><input type="submit" name="ajouter"></p>
     </form>

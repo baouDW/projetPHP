@@ -13,21 +13,19 @@ function listPosts(){
 
 function insertP(){
 	$manager = new Manager();
-	$insertPost= $manager->insertPost($_POST['titre'], $_POST['texte']);
+	$insertPost= $manager->insertPost($_POST['titre'], $_POST['texte']);	
 	header('Location: ./view/backend/createpostView.php');
 }
 
-function addComment(/*$postId, $author, $comment*/)
+function addComment()
 {
 	$manager = new Manager();
-    //$affectedLines = postComment($postId, $author, $comment);
     $affectedLines = $manager->postComment($_GET['id'], $_POST['author'], $_POST['comment']);
 
     if ($affectedLines === false) {
         die('Impossible d\'ajouter le commentaire !');
     }
     else {
-       // header('Location: view/postView.php');
         header('Location: ./index.php');
     }
 }

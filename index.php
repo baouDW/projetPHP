@@ -35,11 +35,11 @@ if (isset($_GET['action'])) {
     }
 
     elseif ($_GET['action'] == 'insertPost') {
-        if (isset($_POST['titre'])) {
+        if (isset($_POST['titre']) && isset($_POST['texte'])) {
             insertP();
         }
         else {
-            echo 'Erreur : aucun titre envoyé';
+            echo 'Erreur : aucun titre envoyé ou texte';
         }
     }
 
