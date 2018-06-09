@@ -173,6 +173,44 @@
 		box-shadow: none;
 		background: #ddd;
 	}
+
+	@media screen and (max-width: 564px)
+	{
+    	.container
+	    {
+	        padding-left: 0px;
+	    }
+	    body
+	    {
+	    	font-size: 7px;
+	    }
+	    .table-title h2
+	    {
+	    	font-size: 10px;
+	    }
+	    .table-title .btn
+	    {
+	    	font-size: 10px;
+	    }
+	    .row 
+	    {
+		    margin-right: -15px;
+		    margin-left: -15px;
+		    width: 300px;
+		}
+		.none
+		{
+			display: none;
+		}
+		.table-wrapper
+		{
+			margin:0px;
+		}
+		table .table-striped .table-hover
+		{
+			margin-left: -20px;
+		}
+	}
 		
 </style>
 
@@ -194,7 +232,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-						<th>
+						<th class="none">
 							
 						</th>
                         <th>Titre</th>
@@ -209,7 +247,7 @@
 					{
 					?> 
 					<tr>
-						<td>							
+						<td class= "none">							
 						</td>
                         <td><a href="index.php?id=<?= $data['id'] ?>&action=comm"><?= htmlspecialchars($data['title']) ?></td>
                         <td><?= $data['creation_date_fr'] ?></td>
