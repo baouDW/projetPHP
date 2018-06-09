@@ -27,7 +27,6 @@ a
 {
 	display: flex; 
 	flex-direction: column;
-	width:300px;
 	min-height: 600px;
 	background-color: #a9d0f8;
 	border: solid 1px;
