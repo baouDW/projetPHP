@@ -122,6 +122,15 @@ class Manager
         return $resultat;    
     }
 
+    public function verifPseudo($pseudo){
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT pseudo FROM membres WHERE pseudo = :pseudo');
+        $req->execute(array(
+        'pseudo' => $pseudo));
+        $resultat = $req->fetch();
+        return $resultat;    
+    }
+
     private function dbConnect()
     {
         try

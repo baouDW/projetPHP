@@ -79,7 +79,7 @@ try{
             if ($_POST['password'] == $_POST['confirm_password']) {    signup();
             }
             else {
-                throw new Exception('Mot de passe differents <p><a href="view/frontend/signUpView.php">Retour</a></p>') ;
+                header('Location: view/frontend/signUpView.php?diferent=diferent');
             }
         }
 

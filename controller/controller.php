@@ -89,8 +89,19 @@ function delcomm(){
 function signup(){
 	$manager = new Manager();
 	$pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	$inscription= $manager->inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
-	header('Location: ./index.php');
+
+	$verifPseudo= $manager->verifPseudo($_POST['pseudo']);
+	if ($verifPseudo)
+		{          
+    		
+    		header('Location: view/frontend/signUpView.php?error=error');
+		}
+	else
+		{
+			$inscription= $manager->inscription($_POST['Nom'], $_POST['Prenom'], $_POST['pseudo'], $pass_hache, $_POST['email']);
+			header('Location: ./index.php');
+		}
+	
 }
 
 function login(){
@@ -100,11 +111,10 @@ function login(){
 	$isPasswordCorrect = password_verify($_POST['pass'], $verifuser['pass']);
 	
 
-	if (!$verifuser)
+	if ((!$verifuser) OR (!$isPasswordCorrect))
 	{
-
-           header('Location: view/frontend/loginViewError.php');
-    	echo 'Mauvais identifiant ou mot de passe !';
+           
+        header('Location: view/frontend/loginView.php?error=error');
 	}
 	else
 	{

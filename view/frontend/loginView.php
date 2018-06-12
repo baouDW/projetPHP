@@ -28,6 +28,10 @@
         font-size: 15px;
         font-weight: bold;
     }
+    .error
+    {
+        color: red;
+    }
 </style>
 </head>
 <body>
@@ -41,6 +45,15 @@
         <div class="form-group">
             <input type="password" name="pass" class="form-control" placeholder="Mot de passe" required="">
         </div>
+        <?php
+        if (isset($_GET['error']))
+        {
+        ?>
+            <div class="error">Mauvais identifiant ou mot de passe</div>
+        <?php
+        }
+        ?>   
+        
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">S'identifier</button>
         </div>

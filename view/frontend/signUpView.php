@@ -98,6 +98,10 @@
     .signup-form form a:hover{
         text-decoration: underline;
     }  
+    .error
+    {
+        color: red;
+    }
 </style>
 </head>
 <body>
@@ -110,11 +114,19 @@
             <div class="row">
                 <div class="col-xs-6"><input type="text" class="form-control" name="Prenom" placeholder="Prenom" required="required"></div>
                 <div class="col-xs-6"><input type="text" class="form-control" name="Nom" placeholder="Nom" required="required"></div>
-            </div>          
+            </div> 
         </div>
+        <?php
+        if (isset($_GET['error']))
+        {
+        ?>
+            <div class="error">Pseudo déja utilisé</div>
+        <?php
+        }
+        ?> 
         <div class="form-group">
             <input type="text" class="form-control" name="pseudo" placeholder="Pseudo" required="required">
-        </div>
+        </div>        
         <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
@@ -123,7 +135,15 @@
         </div>
         <div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirmer mot de passe" required="required">
-        </div>        
+            <?php
+            if (isset($_GET['diferent']))
+            {
+            ?>
+                <div class="error">Mot de passe différents</div>
+            <?php
+            }
+            ?>
+        </div>                
         <div class="form-group">
             <label class="checkbox-inline"><input type="checkbox" required="required"> J'accepte les <a href="confidentialitéView.html">Condition d'utilisation</a> &amp; <a href="confidentialitéView.html">politique de vie privé.</a></label>
         </div>
