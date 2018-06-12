@@ -1,28 +1,23 @@
-<?php
-//require('../../model/model.php');
-//$manager = new Manager();
-//$posts= $manager->getPosts();
-?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>Ecrire un chapitre</title>
     <link rel="stylesheet" href="../public/css/tinycss.css">
-    <script src="../public/js/editeur.js"></script>
-    <!--<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-    <script>tinymce.init({ selector:'textarea' });</script>-->
+    <script src="../public/js/editeur.js"></script>    
   </head>
   <body>
-    
-
-
-
-
+    <style>
+      .space
+      {
+        margin-left: 50px;
+      }
+    </style>
 
 <?php ob_start(); ?>
 
-<div>
+<div class="space">
     <form method="post" action="index.php?action=insertPost">
         <p>
            <label for="titre">
@@ -41,12 +36,12 @@
        <p><input type="submit" name="ajouter" value="Ajouter un article"></p>
     </form>
 </div>
-<h2>Apercu des chapitres</h2>
+<h2 class="space">Apercu des chapitres</h2>
 <?php
 while ($data = $posts->fetch())
 {
 ?>    
-     <div class="news">
+     <div class="space">
         <h3>
             <?= htmlspecialchars($data['title']) ?>
         </h3>

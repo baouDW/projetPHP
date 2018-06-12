@@ -110,7 +110,6 @@ class Manager
         $db = $this->dbConnect();
         $user = $db->query('SELECT nom, pseudo, email, date_inscription FROM membres ORDER BY date_inscription DESC');    
 
-        //return $user;
         return $user;
     }
 

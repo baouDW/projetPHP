@@ -1,6 +1,4 @@
 <?php
-//require('model/model.php');
-//$posts= getPosts();
 $title = 'Accueil'; 
 ?>
 <style>

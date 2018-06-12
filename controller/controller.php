@@ -102,6 +102,8 @@ function login(){
 
 	if (!$verifuser)
 	{
+
+           header('Location: view/frontend/loginViewError.php');
     	echo 'Mauvais identifiant ou mot de passe !';
 	}
 	else
@@ -138,7 +140,7 @@ function login(){
 function adminaccess(){
 	$manager = new Manager();
 	$posts= $manager->getPosts();
-	require('/view/backend/crudView.php');
+	require('./view/backend/crudView.php');
 }
 
 function deconexion(){

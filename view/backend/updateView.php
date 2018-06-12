@@ -1,6 +1,12 @@
 
 <?php ob_start(); ?>
-<div>
+<style>
+  .space
+  {
+    margin-left: 50px;
+  }
+</style>
+<div class="space">
     <form method="post" action="index.php?id=<?php echo $_GET['id'] ?>&action=modif">
         <p>
            <label for="titre">
