@@ -26,7 +26,8 @@ function addComment()
         die('Impossible d\'ajouter le commentaire !');
     }
     else {
-        header('Location: ./index.php');
+    	header('Location: ' . $_SERVER['HTTP_REFERER'] );
+        //header('Location: ./index.php');
     }
 }
 
@@ -83,7 +84,7 @@ function membreView(){
 function delcomm(){
 	$manager = new Manager();
 	$delcomm= $manager->deleteComment($_GET['id']);
-	header('Location: ./index.php?action=adminaccess');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function signup(){
