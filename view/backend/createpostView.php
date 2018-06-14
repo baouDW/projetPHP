@@ -43,7 +43,7 @@ while ($data = $posts->fetch())
 ?>    
      <div class="space">
         <h3>
-            <?= htmlspecialchars($data['title']) ?>
+            <?= $data['title'] ?>
         </h3>
                 
         <p>

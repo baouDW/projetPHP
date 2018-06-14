@@ -23,11 +23,10 @@ function addComment()
     $affectedLines = $manager->postComment($_GET['id'], $_POST['author'], $_POST['comment']);
 
     if ($affectedLines === false) {
-        die('Impossible d\'ajouter le commentaire !');
+        throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
     	header('Location: ' . $_SERVER['HTTP_REFERER'] );
-        //header('Location: ./index.php');
     }
 }
 
@@ -52,7 +51,7 @@ function update(){
 function signal(){
 	$manager = new Manager();
 	$Signalement= $manager->Signalement($_GET['id']);
-	header('Location: ./index.php');
+	header('Location: ' . $_SERVER['HTTP_REFERER'] );
 }
 
 function delete(){
@@ -143,7 +142,7 @@ function login(){
 			header('Location: ./index.php');
 	    }
 	    else{
-	    	echo "Mauvais identifiant ou mot de passe !!!";
+	    	throw new Exception('Mauvais identifiant ou mot de passe !!!');
 	    }
 	}
 }
@@ -157,12 +156,10 @@ function adminaccess(){
 function deconexion(){
 		
 	session_start();
-
-	// Suppression des variables de session et de la session
+	
 	$_SESSION = array();
 	session_destroy();
-
-	// Suppression des cookies de connexion automatique
+	
 	setcookie('id', '');
 	setcookie('pseudo', '');
 	header('Location: ./index.php');

@@ -10,8 +10,6 @@ $title = 'Accueil';
   }
 </style>
 
-
-
 <?php ob_start(); ?>
 
 <?php
@@ -22,7 +20,7 @@ while ($data = $posts->fetch())
     <div class="post-preview">
             <a href="index.php?id=<?= $data['id'] ?>&action=comm">
               <h2 class="post-title">
-                <?= htmlspecialchars($data['title']) ?>
+                <?= $data['title'] ?>
               </h2>
               <h3 class="post-subtitle">
                 <p><?= substr($data['content'], 0, 200); ?><span class="lire-suite">...Lire la suite</span></p>

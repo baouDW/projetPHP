@@ -9,7 +9,7 @@ $title = $post['title'];
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-heading">
-              <h1><?= htmlspecialchars($post['title']) ?></h1>
+              <h1><?= $post['title'] ?></h1>
               
               <span class="meta">Poster le <?= $post['creation_date_fr'] ?></span>
             </div>
@@ -23,7 +23,7 @@ $title = $post['title'];
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <p>
-              <?= nl2br(htmlspecialchars($post['content'])) ?>
+              <?= $post['content']?>
             </p>
           </div>
         </div>

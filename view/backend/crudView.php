@@ -249,7 +249,7 @@
 					<tr>
 						<td class= "none">							
 						</td>
-                        <td><a href="index.php?id=<?= $data['id'] ?>&action=comm"><?= htmlspecialchars($data['title']) ?></td>
+                        <td><a href="index.php?id=<?= $data['id'] ?>&action=comm"><?= $data['title'] ?></td>
                         <td><?= $data['creation_date_fr'] ?></td>
                         <td><a href="index.php?action=commadmin&amp;id=<?= $data['id'] ?>">Gerer les commentaires</a></td>				
                         <td>
