@@ -76,10 +76,17 @@ try{
         }
 
         elseif ($_GET['action'] == 'inscription') {
-            if ($_POST['password'] == $_POST['confirm_password']) {    signup();
+            if (!empty($_POST['Nom']) && !empty($_POST['Prenom']) && !empty($_POST['pseudo']) && ($_POST['password'] == $_POST['confirm_password']) && (preg_match("#@#", $_POST['email'])))
+            {    
+                signup();
             }
-            else {
+            elseif (($_POST['password'] !== $_POST['confirm_password'])){
                 header('Location: view/frontend/signUpView.php?diferent=diferent');
+            }
+            elseif (!preg_match("#@#", $_POST['email'])){
+                header('Location: view/frontend/signUpView.php?mail=mail');
+            }else{
+                throw new Exception("Tout les champs ne sont pas correctement remplis");
             }
         }
 

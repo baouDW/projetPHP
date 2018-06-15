@@ -130,6 +130,14 @@
         <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
+        <?php
+        if (isset($_GET['mail']))
+        {
+        ?>
+            <div class="error">Format mail nécessaire</div>
+        <?php
+        }
+        ?>
         <div class="form-group">
             <input type="password" class="form-control" name="password" placeholder="Mot de passe" required="required">
         </div>
